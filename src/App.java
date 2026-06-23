@@ -294,8 +294,7 @@ public class App {
             }
             pedidos.inserir(pedido);
 
-            // TODO: vincule o cliente sorteado ao seu novo pedido na tabela hash pedidosPorCliente,
-            // chamando inserirNaTabelaPedidosDoCliente(cliente, pedido).
+            inserirNaTabelaPedidosDoCliente(cliente, pedido);
         }
         return pedidos;
     }
@@ -306,10 +305,15 @@ public class App {
      */
     private static void inserirNaTabelaPedidosDoCliente(Cliente cliente, Pedido pedido) {
 
-    	// TODO: implementar, de forma análoga ao método inserirNaTabela(Produto, Pedido):
-    	// pesquise o histórico de pedidos do cliente em pedidosPorCliente; se ele não existir
-    	// (NoSuchElementException), crie uma nova Lista<Pedido> e insira-a na tabela associada ao cliente;
-    	// em seguida, insira o pedido na lista de histórico do cliente.
+    	Lista<Pedido> pedidosDoCliente;
+    	
+    	try {
+    		pedidosDoCliente = pedidosPorCliente.pesquisar(cliente);
+    	} catch (NoSuchElementException excecao) {
+    		pedidosDoCliente = new Lista<>();
+    		pedidosPorCliente.inserir(cliente, pedidosDoCliente);
+    	}
+    	pedidosDoCliente.inserir(pedido);
 
     }
     
