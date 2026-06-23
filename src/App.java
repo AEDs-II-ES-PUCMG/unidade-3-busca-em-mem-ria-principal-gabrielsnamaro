@@ -1,5 +1,6 @@
 import java.nio.charset.Charset;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Scanner;
@@ -354,12 +355,11 @@ public class App {
      */
     public static void pedidosDoCliente() {
 
-    	// TODO: implementar.
-    	// 1) Leia do teclado o documento do cliente desejado.
-    	// 2) Localize o cliente correspondente na árvore clientesPorId.
-    	// 3) Pesquise o histórico de pedidos do cliente na tabela pedidosPorCliente.
-    	// 4) Exiba o cliente e seu histórico de pedidos.
+        int documento = Integer.parseInt(teclado.nextLine());
+        Cliente cliente = clientesPorId.pesquisar(documento);
+        Lista<Pedido> historico = pedidosPorCliente.pesquisar(cliente);
 
+        System.out.println("Cliente: " + cliente.toString()+ "\nPedidos: \n" + historico.toString());
     }
     
     public static void main(String[] args) {
