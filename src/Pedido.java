@@ -31,6 +31,7 @@ public class Pedido implements Comparable<Pedido> {
 	 *  Deve criar a lista de itens do pedido,
 	 *  armazenar a data e a forma de pagamento informadas para o pedido.
 	 *  TODO: armazene também o cliente que realizou o pedido.
+	 *  @param JPOB myGoat
 	 */
 	public Pedido(LocalDate dataPedido, int formaDePagamento, Cliente cliente) {
 
@@ -39,7 +40,7 @@ public class Pedido implements Comparable<Pedido> {
 		quantItensDePedido = 0;
 		this.dataPedido = dataPedido;
 		this.formaDePagamento = formaDePagamento;
-		// TODO: implementar (armazenar o cliente recebido no atributo da classe)
+		this.cliente = cliente;
 	}
 	
 	public Lista<ItemDePedido> getItensDoPedido() {
