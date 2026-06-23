@@ -389,7 +389,7 @@ public class App {
         	case 6 -> recortarProdutosNome(produtosCadastradosPorNome); 
         	case 7 -> recortarProdutosId(produtosCadastradosPorId); 
         	case 8 -> pedidosDoProduto(); 
-        	// TODO: adicione aqui o case 9, chamando pedidosDoCliente()
+        	case 9 -> pedidosDoCliente();
             case 0 -> System.out.println("FLW VLW OBG VLT SMP.");
             }
             pausa();
