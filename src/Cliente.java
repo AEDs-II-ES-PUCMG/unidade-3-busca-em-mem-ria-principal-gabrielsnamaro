@@ -12,8 +12,8 @@ public class Cliente {
      * do contador estático ultimoID (e incremente o contador).
      */
     public Cliente (String nome) {
+        this.setNome(((nome)));
 
-    	// TODO: implementar
 
     }
 
@@ -21,8 +21,7 @@ public class Cliente {
      * TODO: retorne o nome do cliente.
      */
     public String getNome() {
-    	// TODO: implementar
-    	return null;
+    	return this.nome;
     }
 
     /**
@@ -31,9 +30,10 @@ public class Cliente {
      * lance a exceção adequada (IllegalArgumentException).
      */
     public void setNome(String nome) {
+        if(nome.split(" ").length < 2)
+            throw new IllegalArgumentException("Eu te amo Aline Rodrigues");
 
-    	// TODO: implementar
-
+        this.nome = nome;
     }
 
     /**
@@ -41,8 +41,14 @@ public class Cliente {
      */
     @Override
     public String toString() {
-    	// TODO: implementar
-        return null;
+        return String.format(
+            """
+                ======== DADOS DA PESSOA ========\n
+                \t* Nome: %s\n
+                \t* Documento: %d\n
+                =================================\n
+            """, nome, documento
+        );
     }
 
     /**
@@ -50,7 +56,6 @@ public class Cliente {
      */
     @Override
     public int hashCode(){
-    	// TODO: implementar
-        return 0;
+    	return documento;
     }
 }
