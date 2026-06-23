@@ -280,11 +280,8 @@ public class App {
         for (int i = 0; i < quantidade; i++) {
         	formaDePagamento = sorteio.nextInt(2) + 1;
 
-        	// TODO: selecione aleatoriamente um cliente para este pedido.
-        	// Sorteie um documento de cliente (use sorteio.nextInt(quantosClientes) + 10_000)
-        	// e localize o cliente correspondente em clientesPorId.
-        	idCliente = -1;
-        	cliente = null;
+        	idCliente = sorteio.nextInt((quantosClientes) + 10_000);
+        	cliente = clientesPorId.pesquisar(idCliente);
 
         	Pedido pedido = new Pedido(LocalDate.now(), formaDePagamento, cliente);
             quantProdutos = sorteio.nextInt(8) + 1;
