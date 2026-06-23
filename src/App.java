@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.function.Function;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -131,17 +132,25 @@ public class App {
      * @return Uma árvore AVL com os clientes carregados, ou vazia em caso de problemas de leitura.
      */
     static AVL<Integer, Cliente> lerClientes(String nomeArquivoDados) {
+        try {
+            Scanner arquivo = new Scanner(new File(nomeArquivoDados));
+            AVL<Integer, Cliente> clientesCadastrados = new AVL<Integer, Cliente>();
 
-    	Scanner arquivo = null;
-    	AVL<Integer, Cliente> clientesCadastrados = new AVL<Integer, Cliente>();
+            int nClientes = Integer.parseInt(arquivo.nextLine());
 
-    	// TODO: implementar a leitura do arquivo de clientes, seguindo o mesmo padrão usado em lerProdutos:
-    	// abra o arquivo, leia a primeira linha (quantidade de clientes), e então, para cada linha seguinte,
-    	// crie um novo Cliente com o nome lido e insira-o na árvore clientesCadastrados (chave = hashCode do cliente).
-    	// Atualize também a variável quantosClientes.
-    	// Em caso de problemas na leitura (IOException), a árvore retornada deve ser vazia.
+            for(int u = 0; u < nClientes; u++) {
+                Cliente atual = new Cliente(arquivo.nextLine());
+                clientesCadastrados.inserir(atual.hashCode(), atual);
+            }
 
-    	return clientesCadastrados;
+            quantosClientes += nClientes;
+
+            arquivo.close();
+
+            return clientesCadastrados;
+        } catch(FileNotFoundException e) {
+            return new AVL<Integer, Cliente>();
+        }
     }
 
     static <K> Produto localizarProduto(ABB<K, Produto> produtosCadastrados, K procurado) {

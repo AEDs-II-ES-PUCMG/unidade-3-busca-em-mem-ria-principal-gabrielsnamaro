@@ -13,8 +13,8 @@ public class Cliente {
      */
     public Cliente (String nome) {
         this.setNome(((nome)));
-
-
+        ultimoID++;
+        this.documento = ultimoID;
     }
 
     /**
